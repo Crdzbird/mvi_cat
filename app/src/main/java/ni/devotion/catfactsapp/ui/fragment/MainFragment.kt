@@ -39,14 +39,13 @@ constructor(
             LinearLayoutManager(
                 requireActivity().applicationContext,
                 LinearLayoutManager.VERTICAL,
-                false
+                true
             )
-        layoutManager.reverseLayout = true
         layoutManager.stackFromEnd = true
         recyclerViewCats.layoutManager = layoutManager
         recyclerViewCats.adapter = catsAdapter
 
-        subscribeObservers()
+
         lifecycleScope.launch {
             viewModel.userIntent.send(Intent.GetCatEvent)
         }
@@ -59,6 +58,7 @@ constructor(
                     is DataState.Success -> {
                         displayProgressBar(false)
 //                    appendCatID(dataState.data)
+                        displayError("")
                         catsAdapter.setCats(it.cats)
                     }
                     is DataState.Error -> {
@@ -74,7 +74,7 @@ constructor(
     }
 
     private fun displayError(message: String?) {
-        //  if (message != null) text.text = message else text.text = "Unknown error."
+        if (message != null) textDemo.text = message else textDemo.text = "Unknown error."
     }
 
 

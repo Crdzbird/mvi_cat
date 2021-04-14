@@ -25,6 +25,7 @@ object RepositoryModule {
         cacheMapper: CacheMapper,
         networkMapper: NetworkMapper
     ): CatRepository {
-        return CatRepository(catDao, catRetrofit, cacheMapper, networkMapper)
+        return CatRepository(catDao, catRetrofit,
+            cacheMapper, networkMapper)
     }
 }
