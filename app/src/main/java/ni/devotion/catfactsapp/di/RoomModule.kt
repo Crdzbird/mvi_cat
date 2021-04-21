@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.android.qualifiers.ApplicationContext
+import ni.devotion.catfactsapp.room.BreedsDao
 import ni.devotion.catfactsapp.room.CatDao
 import ni.devotion.catfactsapp.room.CatDatabase
 import javax.inject.Singleton
@@ -28,4 +29,38 @@ object RoomModule {
     fun provideCatDao(catDatabase: CatDatabase): CatDao {
         return catDatabase.catDao()
     }
+
+    @Singleton
+    @Provides
+    fun provideBreedDao(catDatabase: CatDatabase): BreedsDao {
+        return catDatabase.breedsDao()
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
